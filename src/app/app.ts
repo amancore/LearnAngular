@@ -8,5 +8,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('LearnAngular');
+  // protected readonly title = signal('LearnAngular');
+	text = ''
+	email: String = ''
+	getEmail(val: String) {
+		this.email = val;
+	}
 }
