@@ -17,11 +17,16 @@
 @for (item of items; track $index) {
 	<h1 class="w-10 h-10 bg-blue-500">{{item}}</h1>
 } -->
-<p>Count: {{ count() }}</p>
+<!-- <p>Count: {{ count() }}</p>  for the signals () this baracket is mandetory 
 <p>Double: {{ doubleCount() }}</p>
 
 <button (click)="inc()">Increment</button>
+ -->
 
 
+<button (click)="count.set(count()+1)">inc</button>
+<p>{{count()}}</p>
+<button (click)="count.set(count()-1)">dec</button>
+ 
 
 <router-outlet></router-outlet>

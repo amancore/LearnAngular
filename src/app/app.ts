@@ -18,16 +18,21 @@ export class App {
   // items = ['a','c','d','e']
 
   count = signal(0);
-
-  doubleCount = computed(() => this.count() * 2);
-
-  constructor() {
-    effect(() => {
-      console.log('Count:', this.count());
-    });
-  }
-
-  inc() {
-    this.count.update((v) => v + 5);
-  }
+	constructor() {
+		effect(() => {
+			console.log(this.count())
+		})
+	}
+// 
+//   doubleCount = computed(() => this.count() * 2);
+// 
+//   constructor() {
+//     effect(() => {
+//       console.log('Count:', this.count());
+//     });
+//   }
+// 
+//   inc() {
+//     this.count.update((v) => v + 5);
+//   }
 }
