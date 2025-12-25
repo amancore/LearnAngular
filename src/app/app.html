@@ -3,12 +3,18 @@
 
 <p>You typed: {{ text }}</p>
 
-<input class="w-1/2 h-10 border-2" placeholder="write here please" type="text" #emailType (input)="getEmail(emailType.value)">
+<input class="w-1/2 h-10 border-2" placeholder="write here please" type="text" #emailType
+	(input)="getEmail(emailType.value)">
 <p>Email typed: {{email}}</p>
- 
+
 
 @if (!display) {
-	<div class="w-40 h-40 bg-red-500">{{display?'show red' : 'show blue'}}</div>
+<div class="w-40 h-40 bg-red-500">{{display?'show red' : 'show blue'}}</div>
 }
+
+
 <button (click)="display=!display">show it</button>
+@for (item of items; track $index) {
+	<h1 class="w-10 h-10 bg-blue-500">{{item}}</h1>
+}
 <router-outlet></router-outlet>

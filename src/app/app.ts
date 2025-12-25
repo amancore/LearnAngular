@@ -15,5 +15,5 @@ export class App {
 		this.email = val;
 	}
 	display=true
-	
+	items = ['a','c','d','e']
 }
