@@ -1,32 +1,17 @@
-<!-- <input class="w-1/2 h-10 border-2" placeholder="write here please" type="text"
-	(input)="text = $any($event.target).value">
-
-<p>You typed: {{ text }}</p>
-
-<input class="w-1/2 h-10 border-2" placeholder="write here please" type="text" #emailType
-	(input)="getEmail(emailType.value)">
-<p>Email typed: {{email}}</p>
-
-
-@if (!display) {
-<div class="w-40 h-40 bg-red-500">{{display?'show red' : 'show blue'}}</div>
-}
-
-
-<button (click)="display=!display">show it</button>
-@for (item of items; track $index) {
-	<h1 class="w-10 h-10 bg-blue-500">{{item}}</h1>
-} -->
-<!-- <p>Count: {{ count() }}</p>  for the signals () this baracket is mandetory 
-<p>Double: {{ doubleCount() }}</p>
-
-<button (click)="inc()">Increment</button>
- -->
-
-
-<button (click)="count.set(count()+1)">inc</button>
-<p>{{count()}}</p>
-<button (click)="count.set(count()-1)">dec</button>
- 
-
-<router-outlet></router-outlet>
+<div class="flex flex-col justify-center items-center">
+	<h1 class="w-[400px] font-bold text-3xl bg-pink-200 text-center p-2 m-20 border-2 border-brand-muted rounded-md">TO DO LIST</h1>
+	<input [value]="task()" (input)="task.set($any($event.target).value)" class="w-1/6 h-[40px] text-center border-2 rounded-md border-brand-muted m-4" type="text" placeholder="Enter new task :">
+	<button (click)="addTask()" class="w-32 h-10 text-center text-brand-text border-2 rounded-md border-red-500">{{ editId() === null ? 'Add Task' : 'Update Task' }}</button>
+	<ul class="w-1/4">
+			@for (t of taskList(); track t.id) {
+			<li class="flex justify-between items-center p-2 border-b">
+				<span>{{ t.task }}</span>
+		
+				<div class="flex gap-2">
+					<button class="text-blue-600" (click)="editTask(t)">Edit</button>
+					<button class="text-red-600" (click)="deleteTask(t.id)">Delete</button>
+				</div>
+			</li>
+			}
+		</ul>
+</div>

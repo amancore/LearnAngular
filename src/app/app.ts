@@ -1,38 +1,34 @@
 import { Component, signal, computed, effect } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
 export class App {
-  // protected readonly title = signal('LearnAngular');
-  // text = ''
-  // email: String = ''
-  // getEmail(val: String) {
-  // 	this.email = val;
-  // }
-  // display=true
-  // items = ['a','c','d','e']
+  task = signal('');
+  taskList = signal<{ id: number; task: string }[]>([]);
+  editId = signal<number | null>(null);
+  addTask() {
+    if (!this.task().trim()) return;
+    if (this.editId() == null) {
+      this.taskList.update((list) => list.concat({ id: Date.now(), task: this.task() }));
+    } else {
+      this.taskList.update((list) =>
+        list.map((t) => (t.id === this.editId() ? { ...t, task: this.task() } : t))
+      );
+      this.editId.set(null);
+    }
+    this.task.set('');
+  }
 
-  count = signal(0);
-	constructor() {
-		effect(() => {
-			console.log(this.count())
-		})
-	}
-// 
-//   doubleCount = computed(() => this.count() * 2);
-// 
-//   constructor() {
-//     effect(() => {
-//       console.log('Count:', this.count());
-//     });
-//   }
-// 
-//   inc() {
-//     this.count.update((v) => v + 5);
-//   }
+  editTask(t: any) {
+    this.task.set(t.task);
+    this.editId.set(t.id);
+  }
+
+  deleteTask(id: number) {
+    this.taskList.update((list) => list.filter((t) => t.id !== id));
+  }
 }
+
