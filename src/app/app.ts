@@ -14,4 +14,6 @@ export class App {
 	getEmail(val: String) {
 		this.email = val;
 	}
+	display=true
+	
 }
