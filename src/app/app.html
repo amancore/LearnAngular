@@ -1,4 +1,4 @@
-<input class="w-1/2 h-10 border-2" placeholder="write here please" type="text"
+<!-- <input class="w-1/2 h-10 border-2" placeholder="write here please" type="text"
 	(input)="text = $any($event.target).value">
 
 <p>You typed: {{ text }}</p>
@@ -16,5 +16,12 @@
 <button (click)="display=!display">show it</button>
 @for (item of items; track $index) {
 	<h1 class="w-10 h-10 bg-blue-500">{{item}}</h1>
-}
+} -->
+<p>Count: {{ count() }}</p>
+<p>Double: {{ doubleCount() }}</p>
+
+<button (click)="inc()">Increment</button>
+
+
+
 <router-outlet></router-outlet>
