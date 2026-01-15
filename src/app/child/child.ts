@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, model, Output } from '@angular/core';
 
 @Component({
 	selector: 'app-child',
@@ -8,10 +8,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./child.css'],
 })
 export class Child {
-  @Input() name: string = '';
-  @Output() dataEvent = new EventEmitter<String>(); // event has been created
+  // @Input() name: string = '';
+  // @Output() dataEvent = new EventEmitter<String>(); // event has been created
 
-  sendData() {
-    this.dataEvent.emit('Hello from child');
-  }
+  // sendData() {
+    // this.dataEvent.emit('Hello from child');
+  // }
+	// isOpen = model<boolean>(false);
 }

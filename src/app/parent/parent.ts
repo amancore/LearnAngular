@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Child } from '../child/child';
 
 @Component({
@@ -12,4 +12,5 @@ export class Parent {
 	getData(message: string) {
 		console.log(message);
 	}
+	panelOpen = signal(true)
 }	

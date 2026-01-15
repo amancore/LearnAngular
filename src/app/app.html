@@ -1,2 +1,17 @@
-<app-parent></app-parent>
+<!-- <app-parent></app-parent> -->
+
+<div class="p-5">
+	@if (quotes().length) { @for(quote of quotes(); track quote.id){
+	<div class="p-2.5 border border-gray-300 m-1.25 rounded-md bg-white shadow-sm hover:shadow-md transition-shadow">
+		<strong class="block text-sm font-bold text-gray-800">ID: {{ quote.id }}</strong><br />
+		<p class="mt-1 text-gray-700 italic">"{{ quote.quote }}"</p>
+		<span class="text-xs text-gray-500">{{quote.author}}</span>
+		</div>
+
+	}
+	}@else {
+		<p class="text-center text-gray-600">Loading quotes...</p>
+	}
+</div>
+
 <router-outlet></router-outlet>
