@@ -1,15 +1,21 @@
-<!-- <app-parent></app-parent> -->
-
-<div class="p-5">
-	@if (quotes().length) { @for(quote of quotes(); track quote.id){
-	<div class="p-2.5 border border-gray-300 m-1.25 rounded-md bg-white shadow-sm hover:shadow-md transition-shadow">
-		<strong class="block text-sm font-bold text-gray-800">ID: {{ quote.id }}</strong><br />
-		<p class="mt-1 text-gray-700 italic">"{{ quote.quote }}"</p>
-		<span class="text-xs text-gray-500">{{quote.author}}</span>
+<div class="p-5 space-y-6">
+	@if(singleQuote()){
+		<div class="p-6 border-2 border-blue-200 bg-blue-50 rounded-xl shadow-md">
+			<p class="text-2xl italic text-gray-800 mb-4">{{singleQuote()?.quote}}</p>
+			<p class="text-lg font-semibold text-blue-700">{{singleQuote()?.author}}</p>
+			<p class="text-sm text-gray-500">ID: {{currentId()}}</p>
+			<button (click)="getRandomQuote()" class="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">New Random Quote</button>
 		</div>
-
 	}
-	}@else {
+	@if (listQuotes().length) { 
+		@for(quote of listQuotes(); track quote.id){
+			<div class="p-2.5 border border-gray-300 m-1.25 rounded-md bg-white shadow-sm hover:shadow-md transition-shadow">
+				<strong class="block text-sm font-bold text-gray-800">ID: {{ quote.id }}</strong><br />
+				<p class="mt-1 text-gray-700 italic">"{{ quote.quote }}"</p>
+				<span class="text-xs text-gray-500">{{quote.author}}</span>
+			</div>
+		}
+	} @else {
 		<p class="text-center text-gray-600">Loading quotes...</p>
 	}
 </div>
